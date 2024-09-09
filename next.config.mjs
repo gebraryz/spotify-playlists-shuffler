@@ -10,7 +10,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig = {
   output: 'standalone',
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'drive.google.com' }],
+    remotePatterns: [{ protocol: 'https', hostname: 'i.scdn.co' }],
   },
 };
 
