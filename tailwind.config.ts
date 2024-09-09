@@ -7,8 +7,7 @@ export default {
   darkMode: ['class'],
   content: [
     'src/app/**/*.{ts,tsx}',
-    'src/shared/components/**/*.{ts,tsx}',
-    'src/platform/components/**/*.{ts,tsx}',
+    'src/components/**/*.{ts,tsx}',
   ],
   theme: {
     screens: {
