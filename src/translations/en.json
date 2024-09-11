@@ -1,3 +1,20 @@
 {
-  "hi": "Hi"
+  "hi": "Hi",
+  "error_while_logging_in": "Error while logging in",
+  "log_out": "Log out",
+  "dark": "Dark",
+  "light": "Light",
+  "system": "System",
+  "change_theme": "Change theme",
+  "playlist": "\"{name}\" playlist",
+  "shuffle": "Shuffle",
+  "could_not_shuffle_playlist": "Could not shuffle playlist",
+  "successfully_shuffled_playlist": "Successfully shuffled playlist",
+  "shuffle_options_date_playlist_desc": "By date added to playlist (descending)",
+  "shuffle_options_date_playlist_asc": "By date added to playlist (ascending)",
+  "shuffle_options_length_asc": "By song length (ascending)",
+  "shuffle_options_length_desc": "By song length (descending)",
+  "shuffle_options_popular": "By popularity",
+  "shuffle_options_random": "Randomly",
+  "gebraryz_spotify_playlists_shuffler": "gebraryz's Spotify Playlists Shuffler"
 }

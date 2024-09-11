@@ -10,7 +10,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig = {
   output: 'standalone',
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'i.scdn.co' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: '*.scdn.co' },
+      { protocol: 'https', hostname: '*.spotifycdn.com' },
+    ],
   },
 };
 
