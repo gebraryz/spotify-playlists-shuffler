@@ -16,5 +16,6 @@
   "shuffle_options_length_desc": "By song length (descending)",
   "shuffle_options_popular": "By popularity",
   "shuffle_options_random": "Randomly",
-  "gebraryz_spotify_playlists_shuffler": "gebraryz's Spotify Playlists Shuffler"
+  "app_title": "gebraryz's Spotify Playlists Shuffler",
+  "app_description": "Tool that allows you to easily mix and organize tracks in your Spotify playlists."
 }

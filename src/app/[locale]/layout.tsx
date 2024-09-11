@@ -1,5 +1,6 @@
 import '../../styles/global.css';
 
+import type { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 import { getMessages } from 'next-intl/server';
 import type { FC, PropsWithChildren } from 'react';
@@ -14,6 +15,23 @@ const font = IBM_Plex_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
 });
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = (await getMessages()) as IntlMessages;
+
+  const title = t.app_title;
+  const description = t.app_description;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+    },
+  };
+};
 
 const Layout: FC<PropsWithChildren<{ params: { locale: string } }>> = async ({
   params: { locale },

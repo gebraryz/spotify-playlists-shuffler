@@ -17,5 +17,6 @@
   "shuffle_options_length_desc": "Po długości piosenki (malejąco)",
   "shuffle_options_popular": "Po najpopularniejszych",
   "shuffle_options_random": "Losowo",
-  "gebraryz_spotify_playlists_shuffler": "Shuffler playlist Spotify by gebraryz"
+  "app_title": "Shuffler playlist Spotify by gebraryz",
+  "app_description": "Narzędzie, które umożliwia łatwe mieszanie i organizowanie utworów w playlistach na Spotify."
 }

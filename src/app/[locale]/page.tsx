@@ -4,9 +4,8 @@ import type { FC } from 'react';
 import { LogIn } from '@/components/log-in';
 import { Page } from '@/components/page';
 import { Shuffler } from '@/components/shuffler';
+import { nextAuthOptions } from '@/configs/next-auth';
 import { cn } from '@/utils/cn';
-
-import { nextAuthOptions } from '../api/auth/[...nextauth]/route';
 
 const HomePage: FC = async () => {
   const data = await getServerSession(nextAuthOptions);
