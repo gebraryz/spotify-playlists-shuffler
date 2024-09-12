@@ -1,12 +1,22 @@
 import type { Session } from 'next-auth';
 import type { FC } from 'react';
 
-import { ShufflerUserPlaylists } from './playlists';
+import { ShufflerPlaylistsToCreate } from './playlists-to-create';
+import { ShufflerPlaylistsToShuffle } from './playlists-to-shuffle';
+import type { Playlists } from './types';
 import { ShufflerUserInformation } from './user-information';
 
-export const Shuffler: FC<{ data: Session['user'] }> = ({ data }) => (
-  <div className="space-y-8">
-    <ShufflerUserInformation data={data} />
-    <ShufflerUserPlaylists accessToken={data.accessToken} />
-  </div>
-);
+export const Shuffler: FC<{ user: Session['user']; playlists: Playlists }> = ({
+  user,
+  playlists,
+}) => {
+  const { accessToken } = user;
+
+  return (
+    <div className="space-y-8">
+      <ShufflerUserInformation data={user} />
+      <ShufflerPlaylistsToCreate accessToken={accessToken} />
+      <ShufflerPlaylistsToShuffle playlists={playlists} accessToken={accessToken} />
+    </div>
+  );
+};
