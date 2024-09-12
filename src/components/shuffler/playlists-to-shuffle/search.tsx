@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
 
 import { Input } from '@/components/ui/input';
@@ -24,10 +25,11 @@ export const ShufflerPlaylistsToShuffleSearch: FC<{
   randomPlaylistName: string | undefined;
 }> = ({ randomPlaylistName }) => {
   const router = useRouter();
+  const t = useTranslations();
 
   return (
     <Input
-      placeholder={randomPlaylistName ?? 'My playlist'}
+      placeholder={randomPlaylistName ?? t('my_playlist')}
       onChange={debounce((event) => {
         router.push(`?search=${event.target.value}`);
       }, 100)}

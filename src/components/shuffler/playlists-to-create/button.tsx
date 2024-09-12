@@ -37,10 +37,10 @@ export const ShufflerPlaylistsToCreateButton: FC<{
       });
     },
     onSuccess: () => {
-      toast({ title: 'Pomyślnie dodano playlistę' });
+      toast({ title: t('successfully_added_playlist') });
     },
     onError: () => {
-      toast({ title: 'Wystąpił błąd podczas dodawania playlisty' });
+      toast({ title: t('error_while_creating_playlist') });
     },
   });
 
