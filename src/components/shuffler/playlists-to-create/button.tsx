@@ -4,10 +4,10 @@ import { IconPlus } from '@tabler/icons-react';
 import { useMutation } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { request } from '@/configs/request';
-import { useToast } from '@/hooks/use-toast';
 
 export const ShufflerPlaylistsToCreateButton: FC<{
   data: Pick<SpotifyApi.PlaylistObjectFull, 'name' | 'description'>;
@@ -15,7 +15,6 @@ export const ShufflerPlaylistsToCreateButton: FC<{
   accessToken: string;
 }> = ({ data, tracks, accessToken }) => {
   const t = useTranslations();
-  const { toast } = useToast();
   const { mutate, isPending } = useMutation({
     mutationKey: ['create-playlist'],
     mutationFn: async () => {
@@ -37,10 +36,10 @@ export const ShufflerPlaylistsToCreateButton: FC<{
       });
     },
     onSuccess: () => {
-      toast({ title: t('successfully_added_playlist') });
+      toast.success(t('successfully_added_playlist'));
     },
     onError: () => {
-      toast({ title: t('error_while_creating_playlist') });
+      toast.error(t('error_while_creating_playlist'));
     },
   });
 

@@ -4,6 +4,7 @@ import { IconArrowsShuffle } from '@tabler/icons-react';
 import { useMutation } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { type FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -13,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown';
 import { request } from '@/configs/request';
-import { useToast } from '@/hooks/use-toast';
 
 enum ShuffleOptions {
   DatePlaylistAsc = 'date_playlist_asc',
@@ -67,7 +67,6 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
   const [selectedShuffleOption, setSelectedShuffleOption]
     = useState<ShuffleOptions>();
   const [isShuffling, setIsShuffling] = useState(false);
-  const { toast } = useToast();
 
   const shuffleOptions = useMemo(
     () => [
@@ -199,11 +198,13 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       }
     },
     onSuccess: () => {
-      toast({ title: t('successfully_shuffled_playlist') });
+      toast.success(t('successfully_shuffled_playlist'));
+
       setIsShuffling(false);
     },
     onError: () => {
-      toast({ title: t('could_not_shuffle_playlist') });
+      toast.error(t('could_not_shuffle_playlist'));
+
       setIsShuffling(false);
     },
   });

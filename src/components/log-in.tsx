@@ -3,15 +3,13 @@
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { type FC, useState } from 'react';
-
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 
 import { ContentContainer } from './content-container';
 import { Button } from './ui/button';
 
 export const LogIn: FC = () => {
   const t = useTranslations();
-  const { toast } = useToast();
   const [isRedirecting, setIsRedirecting] = useState(false);
 
   return (
@@ -25,9 +23,7 @@ export const LogIn: FC = () => {
 
             setIsRedirecting(true);
           } catch {
-            toast({
-              title: t('error_while_logging_in'),
-            });
+            toast.error(t('error_while_logging_in'));
           }
         }}
       >

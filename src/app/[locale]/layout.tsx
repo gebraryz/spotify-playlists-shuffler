@@ -54,7 +54,7 @@ const Layout: FC<PropsWithChildren<{ params: { locale: string } }>> = async ({
           <TopBar />
           {children}
         </ClientSidePackagesProviders>
-        <Toaster />
+        <Toaster richColors />
       </body>
     </html>
   );
