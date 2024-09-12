@@ -6,11 +6,12 @@ import type { FC } from 'react';
 import { LogIn } from '@/components/log-in';
 import { Page } from '@/components/page';
 import { Shuffler } from '@/components/shuffler';
-import type { Playlists } from '@/components/shuffler/types';
 import { nextAuthOptions } from '@/configs/next-auth';
 import { request } from '@/configs/request';
 
-const HomePage: FC = async () => {
+const HomePage: FC<{
+  searchParams: { search: string };
+}> = async ({ searchParams }) => {
   const user = await getServerSession(nextAuthOptions);
 
   if (user) {
@@ -19,11 +20,17 @@ const HomePage: FC = async () => {
         .get('me/playlists', {
           headers: { Authorization: `Bearer ${user.user.accessToken}` },
         })
-        .json<Playlists>();
+        .json<SpotifyApi.PagingObject<SpotifyApi.PlaylistObjectFull>>();
+
+      const filteredPlaylists = searchParams.search
+        ? playlists.items.filter(playlist =>
+          playlist.name.toLowerCase().includes(searchParams.search.toLowerCase()),
+        )
+        : playlists.items;
 
       return (
         <Page>
-          <Shuffler user={user.user} playlists={playlists} />
+          <Shuffler user={user.user} playlists={filteredPlaylists} />
         </Page>
       );
     } catch (error) {

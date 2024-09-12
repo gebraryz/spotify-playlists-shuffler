@@ -13,7 +13,11 @@ export const ClientSidePackagesProviders: FC<
   const [queryClient] = useState(new QueryClient());
 
   return (
-    <NextIntlClientProvider messages={translations} locale={locale}>
+    <NextIntlClientProvider
+      messages={translations}
+      locale={locale}
+      timeZone={Intl.DateTimeFormat().resolvedOptions().timeZone}
+    >
       <SessionProvider>
         <ThemeProvider
           attribute="class"

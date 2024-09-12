@@ -9,10 +9,8 @@ import { Button } from '@/components/ui/button';
 import { request } from '@/configs/request';
 import { useToast } from '@/hooks/use-toast';
 
-import type { Playlist } from '../types';
-
 export const ShufflerPlaylistsToCreateButton: FC<{
-  data: Pick<Playlist, 'name' | 'description'>;
+  data: Pick<SpotifyApi.PlaylistObjectFull, 'name' | 'description'>;
   tracks: string[];
   accessToken: string;
 }> = ({ data, tracks, accessToken }) => {
@@ -31,7 +29,7 @@ export const ShufflerPlaylistsToCreateButton: FC<{
           public: false,
           collaborative: false,
         },
-      }).json<Pick<Playlist, 'id'>>();
+      }).json<Pick<SpotifyApi.PlaylistObjectFull, 'id'>>();
 
       await request.post(`playlists/${playlistId}/tracks`, {
         headers,

@@ -3,10 +3,9 @@ import type { FC } from 'react';
 
 import { ShufflerPlaylistsToCreate } from './playlists-to-create';
 import { ShufflerPlaylistsToShuffle } from './playlists-to-shuffle';
-import type { Playlists } from './types';
 import { ShufflerUserInformation } from './user-information';
 
-export const Shuffler: FC<{ user: Session['user']; playlists: Playlists }> = ({
+export const Shuffler: FC<{ user: Session['user']; playlists: SpotifyApi.PlaylistObjectFull[] }> = ({
   user,
   playlists,
 }) => {

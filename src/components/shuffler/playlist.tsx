@@ -2,10 +2,8 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { FC, ReactNode } from 'react';
 
-import type { Playlist } from './types';
-
 export const ShufflerPlaylist: FC<{
-  data: Pick<Playlist, 'id' | 'name' | 'images'> &
+  data: Pick<SpotifyApi.PlaylistObjectFull, 'id' | 'name' | 'images'> &
   { total: number | string };
   actionButton: ReactNode;
 }> = ({ data, actionButton }) => {
