@@ -1,11 +1,12 @@
 {
   "app": {
     "description": "Narzędzie, które umożliwia łatwe mieszanie i organizowanie utworów w playlistach na Spotify.",
-    "title": "Shuffler playlist Spotify by gebraryz"
+    "title": "Shuffler playlist Spotify"
   },
   "auth": {
     "error_while_logging_in": "Wystąpił błąd podczas logowania",
     "log_out": "Wyloguj się",
+    "log_in": "Zaloguj się",
     "hi": "Cześć"
   },
   "faq": {
@@ -22,6 +23,7 @@
       "answer": "Aplikacja oferuje wiele opcji sortowania: według długości trwania piosenki, daty dodania piosenek do playlisty, popularności oraz losowo."
     }
   },
+  "loading": "Ładowanie",
   "playlist": {
     "name_placeholder": "Nazwa playlisty",
     "total_tracks": "{count} utworów",

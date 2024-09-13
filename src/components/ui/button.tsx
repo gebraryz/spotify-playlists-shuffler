@@ -2,6 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot';
 import type { TablerIcon } from '@tabler/icons-react';
 import { IconLoader } from '@tabler/icons-react';
 import { type VariantProps,cva } from 'class-variance-authority';
+import { useTranslations } from 'next-intl';
 import * as React from 'react';
 
 import { cn } from '../../utils/cn';
@@ -62,6 +63,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const t = useTranslations();
+
     const Comp = asChild ? Slot : 'button';
 
     return (
@@ -77,7 +80,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ? (
               <>
                 <IconLoader className="mr-2 size-4 animate-spin" />
-                {size === 'icon' ? null : <span>Ładowanie...</span>}
+                {size === 'icon'
+                  ? null
+                  : (
+                      <span>
+                        {t('loading')}
+                        ...
+                      </span>
+                    )}
               </>
             )
           : null}

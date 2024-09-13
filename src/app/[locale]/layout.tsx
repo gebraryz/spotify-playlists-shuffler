@@ -1,7 +1,7 @@
 import '../../styles/global.css';
 
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import { getMessages } from 'next-intl/server';
 import type { FC, PropsWithChildren } from 'react';
 
@@ -10,7 +10,7 @@ import { TopBar } from '@/components/top-bar';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';
 
-const font = IBM_Plex_Sans({
+const font = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-sans',

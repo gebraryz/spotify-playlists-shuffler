@@ -1,11 +1,12 @@
 {
   "app": {
     "description": "A tool that allows you to easily mix and organize tracks in Spotify playlists.",
-    "title": "Shuffler for Spotify playlists by gebraryz"
+    "title": "Shuffler for Spotify playlists"
   },
   "auth": {
     "error_while_logging_in": "An error occurred while logging in",
     "log_out": "Log out",
+    "log_in": "Log in",
     "hi": "Hi"
   },
   "faq": {
@@ -22,6 +23,7 @@
       "answer": "The app offers several sorting options: by song duration, date added to the playlist, popularity, and randomly."
     }
   },
+  "loading": "Loading",
   "playlist": {
     "name_placeholder": "Playlist name",
     "total_tracks": "{count} tracks",
