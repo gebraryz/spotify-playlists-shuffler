@@ -8,6 +8,20 @@
     "log_out": "Log out",
     "hi": "Hi"
   },
+  "faq": {
+    "undo_changes": {
+      "question": "Can I undo changes after shuffling a playlist?",
+      "answer": "Unfortunately, once a playlist is shuffled, there is no way to undo the changes."
+    },
+    "login_security": {
+      "question": "Is logging into the app secure?",
+      "answer": "Yes, logging in is done automatically through Spotify. The app only has access to the data provided by Spotify, such as playlist information and public account details, which ensures security."
+    },
+    "sorting_options": {
+      "question": "What sorting options are available?",
+      "answer": "The app offers several sorting options: by song duration, date added to the playlist, popularity, and randomly."
+    }
+  },
   "playlist": {
     "name_placeholder": "Playlist name",
     "total_tracks": "{count} tracks",

@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth/next';
 import { signOut } from 'next-auth/react';
 import type { FC } from 'react';
 
+import { Faq } from '@/components/faq';
 import { LogIn } from '@/components/log-in';
 import { Page } from '@/components/page';
 import { Shuffler } from '@/components/shuffler';
@@ -33,6 +34,7 @@ const HomePage: FC<{
       return (
         <Page className="space-y-6">
           <Shuffler user={session.user} playlists={filteredPlaylists} />
+          <Faq />
         </Page>
       );
     } catch (error) {
@@ -47,6 +49,7 @@ const HomePage: FC<{
   return (
     <Page className="space-y-6">
       <LogIn />
+      <Faq />
     </Page>
   );
 };

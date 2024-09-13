@@ -8,6 +8,20 @@
     "log_out": "Wyloguj się",
     "hi": "Cześć"
   },
+  "faq": {
+    "undo_changes": {
+      "question": "Czy mogę cofnąć zmiany po zrobieniu shuffle playlisty?",
+      "answer": "Niestety, po przetasowaniu playlisty nie ma możliwości cofnięcia zmian."
+    },
+    "login_security": {
+      "question": "Czy logowanie się do aplikacji jest bezpieczne?",
+      "answer": "Tak, logowanie odbywa się automatycznie przez Spotify. Aplikacja ma dostęp tylko do danych, które udostępnia Spotify, czyli informacje o playlistach oraz publicznych informacji o koncie, co zapewnia bezpieczeństwo."
+    },
+    "sorting_options": {
+      "question": "Jakie są opcje sortowania?",
+      "answer": "Aplikacja oferuje wiele opcji sortowania: według długości trwania piosenki, daty dodania piosenek do playlisty, popularności oraz losowo."
+    }
+  },
   "playlist": {
     "name_placeholder": "Nazwa playlisty",
     "total_tracks": "{count} utworów",
