@@ -1,11 +1,11 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { ElementType, FC, PropsWithChildren } from 'react';
 
 import { cn } from '@/utils/cn';
 
 export const ContentContainer: FC<
-  PropsWithChildren<{ className?: string; title?: string }>
-> = ({ className, title, children }) => (
-  <div
+  PropsWithChildren<{ className?: string; title?: string; as?: ElementType }>
+> = ({ className, title, as: Component = 'div', children }) => (
+  <Component
     className={cn(
       'rounded-md border border-border bg-background p-4 shadow-md',
       title ? 'relative' : null,
@@ -24,5 +24,5 @@ export const ContentContainer: FC<
           </p>
         )
       : null}
-  </div>
+  </Component>
 );

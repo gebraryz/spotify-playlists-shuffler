@@ -50,5 +50,8 @@
     "light": "Jasny",
     "system": "Systemowy",
     "change": "Zmień motyw"
+  },
+  "footer": {
+    "all_rights_reserved": "Wszelkie prawa zastrzeżone"
   }
 }

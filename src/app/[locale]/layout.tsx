@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import type { FC, PropsWithChildren } from 'react';
 
 import { ClientSidePackagesProviders } from '@/components/client-side-packages-providers';
+import { Footer } from '@/components/footer';
 import { TopBar } from '@/components/top-bar';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';
@@ -43,7 +44,7 @@ const Layout: FC<PropsWithChildren<{ params: { locale: string } }>> = async ({
     <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen font-sans antialiased text-foreground bg-primary-foreground',
+          'min-h-screen font-sans antialiased text-foreground',
           font.variable,
         )}
       >
@@ -52,7 +53,10 @@ const Layout: FC<PropsWithChildren<{ params: { locale: string } }>> = async ({
           locale={locale}
         >
           <TopBar />
-          {children}
+          <div className="mx-auto max-w-5xl space-y-6 px-4 py-8 desktop:px-8">
+            {children}
+            <Footer />
+          </div>
         </ClientSidePackagesProviders>
         <Toaster richColors />
       </body>

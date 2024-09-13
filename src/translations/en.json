@@ -50,5 +50,8 @@
     "light": "Light",
     "system": "System",
     "change": "Change theme"
+  },
+  "footer": {
+    "all_rights_reserved": "All rights reserved"
   }
 }
