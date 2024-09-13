@@ -165,8 +165,10 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
   const { mutate } = useMutation({
     mutationKey: ['playlists', id],
     mutationFn: async () => {
-      const tracks = await fetchAllTracks(id);
-      const sortedTracks = sortTracks(tracks);
+      let tracks = await fetchAllTracks(id);
+      let sortedTracks = sortTracks(tracks);
+
+      const updatedIndices = new Set<number>();
 
       for (const [i, sortedTrack] of sortedTracks.entries()) {
         if (!sortedTrack) {
@@ -181,7 +183,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
           return track.id === sortedTrack.track.id;
         });
 
-        if (initialTrackIndex !== -1) {
+        if (initialTrackIndex !== -1 && !updatedIndices.has(initialTrackIndex)) {
           try {
             await request.put(`playlists/${id}/tracks`, {
               headers: { Authorization: `Bearer ${accessToken}` },
@@ -191,6 +193,12 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
                   i === sortedTracks.length - 1 ? sortedTracks.length : i + 1,
               },
             });
+
+            updatedIndices.add(initialTrackIndex);
+
+            tracks = await fetchAllTracks(id);
+
+            sortedTracks = sortTracks(tracks);
           } catch (error) {
             console.error(`Failed to update track at index ${i}:`, error);
           }
@@ -199,12 +207,10 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
     },
     onSuccess: () => {
       toast.success(t('playlist.success_while_shuffling_playlist'));
-
       setIsShuffling(false);
     },
     onError: () => {
       toast.error(t('playlist.error_while_shuffling_playlist'));
-
       setIsShuffling(false);
     },
   });
