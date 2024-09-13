@@ -16,11 +16,13 @@ export const LogInButton: FC<{ className?: string }> = ({ className }) => {
 
   return (
     <Button
-      classNames={{ button: buttonVariants({
-        className: cn('text-xl font-bold uppercase', className),
-        size: '2xl',
-      }) }}
-      loading={isLoading}
+      loading={{ state: isLoading }}
+      classNames={{
+        button: buttonVariants({
+          className: cn('text-xl font-bold uppercase', className),
+          size: '2xl',
+        }),
+      }}
       onClick={async () => {
         try {
           setIsLoading(true);

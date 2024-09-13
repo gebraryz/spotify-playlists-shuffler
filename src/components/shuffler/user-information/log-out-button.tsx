@@ -14,7 +14,7 @@ export const ShufflerUserInformationLogOutButton: FC = () => {
   return (
     <Button
       icon={IconLogout2}
-      loading={isLoading}
+      loading={{ state: isLoading }}
       onClick={async () => {
         setIsLoading(true);
 

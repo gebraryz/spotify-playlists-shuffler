@@ -36,9 +36,11 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       const SPOTIFY_TRACKS_LIMIT = 100;
 
       let offset = 0;
+      let hasNextPage = true;
+
       let allTracks: SpotifyApi.PlaylistTrackObject[] = [];
 
-      while (true) {
+      while (hasNextPage) {
         const response = await request
           .get(`playlists/${playlistId}/tracks`, {
             headers: { Authorization: `Bearer ${accessToken}` },
@@ -50,12 +52,9 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
           .json<SpotifyApi.PlaylistTrackResponse>();
 
         allTracks = allTracks.concat(response.items);
-
-        if (response.items.length < SPOTIFY_TRACKS_LIMIT) {
-          break;
-        }
-
         offset += SPOTIFY_TRACKS_LIMIT;
+
+        hasNextPage = response.next !== null;
       }
 
       return allTracks;
@@ -67,6 +66,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
   const [selectedShuffleOption, setSelectedShuffleOption]
     = useState<ShuffleOptions>();
   const [isShuffling, setIsShuffling] = useState(false);
+  const [shuffleCompletionProgress, setShuffleCompletionProgress] = useState(0);
 
   const shuffleOptions = useMemo(
     () => [
@@ -168,6 +168,8 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       let tracks = await fetchAllTracks(id);
       let sortedTracks = sortTracks(tracks);
 
+      let processedTracks = 0;
+
       const updatedIndices = new Set<number>();
 
       for (const [i, sortedTrack] of sortedTracks.entries()) {
@@ -195,10 +197,16 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
             });
 
             updatedIndices.add(initialTrackIndex);
+            processedTracks += 1;
 
-            tracks = await fetchAllTracks(id);
+            setShuffleCompletionProgress(
+              Number.parseFloat(((processedTracks / sortedTracks.length) * 100).toFixed(2)),
+            );
 
-            sortedTracks = sortTracks(tracks);
+            if (selectedShuffleOption !== ShuffleOptions.Random) {
+              tracks = await fetchAllTracks(id);
+              sortedTracks = sortTracks(tracks);
+            }
           } catch (error) {
             console.error(`Failed to update track at index ${i}:`, error);
           }
@@ -207,10 +215,14 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
     },
     onSuccess: () => {
       toast.success(t('playlist.success_while_shuffling_playlist'));
+
+      setShuffleCompletionProgress(0);
       setIsShuffling(false);
     },
     onError: () => {
       toast.error(t('playlist.error_while_shuffling_playlist'));
+
+      setShuffleCompletionProgress(0);
       setIsShuffling(false);
     },
   });
@@ -226,7 +238,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       <DropdownMenuTrigger asChild>
         <Button
           disabled={totalTracks === 0}
-          loading={isShuffling}
+          loading={{ state: isShuffling, text: t('playlist.shuffle_progress', { percent: shuffleCompletionProgress }) }}
           icon={IconArrowsShuffle}
         >
           {t('playlist.shuffle')}

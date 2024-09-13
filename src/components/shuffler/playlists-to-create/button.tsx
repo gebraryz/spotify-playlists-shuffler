@@ -46,7 +46,7 @@ export const ShufflerPlaylistsToCreateButton: FC<{
   return (
     <Button
       icon={IconPlus}
-      loading={isPending}
+      loading={{ state: isPending }}
       onClick={() => {
         mutate();
       }}

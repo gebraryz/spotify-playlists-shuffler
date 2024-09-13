@@ -12,12 +12,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        outline:
-          'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
-        secondary:
-          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
+        default: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+        outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+        secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
       },
@@ -39,12 +36,9 @@ const buttonVariants = cva(
 
 export type ButtonProps = {
   asChild?: boolean;
-  loading?: boolean;
+  loading?: { state: boolean; text?: string };
   icon?: TablerIcon;
-  classNames?: {
-    button?: string;
-    icon?: string;
-  };
+  classNames?: { button?: string; icon?: string };
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className'> &
 VariantProps<typeof buttonVariants>;
 
@@ -64,40 +58,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const t = useTranslations();
-
-    const Comp = asChild ? Slot : 'button';
+    const Component = asChild ? Slot : 'button';
 
     return (
-      <Comp
-        className={cn(
-          buttonVariants({ variant, size, className: classNames?.button }),
-        )}
-        disabled={loading || disabled}
+      <Component
+        className={cn(buttonVariants({ variant, size, className: classNames?.button }))}
+        disabled={loading?.state || disabled}
         ref={ref}
         {...props}
       >
-        {loading
+        {loading?.state
           ? (
               <>
                 <IconLoader className="mr-2 size-4 animate-spin" />
-                {size === 'icon'
-                  ? null
-                  : (
-                      <span>
-                        {t('loading')}
-                        ...
-                      </span>
-                    )}
+                {size !== 'icon' && (
+                  <span>{loading.text || `${t('loading')}...`}</span>
+                )}
               </>
             )
-          : null}
-        {!loading && Icon
-          ? (
-              <Icon className={cn('mr-2', classNames?.icon)} />
-            )
-          : null}
-        {!loading ? <Slottable>{children}</Slottable> : null}
-      </Comp>
+          : (
+              <>
+                {Icon && <Icon className={cn('mr-2', classNames?.icon)} />}
+                {!loading?.state && <Slottable>{children}</Slottable>}
+              </>
+            )}
+      </Component>
     );
   },
 );
