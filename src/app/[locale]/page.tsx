@@ -12,13 +12,13 @@ import { request } from '@/configs/request';
 const HomePage: FC<{
   searchParams: { search: string };
 }> = async ({ searchParams }) => {
-  const user = await getServerSession(nextAuthOptions);
+  const session = await getServerSession(nextAuthOptions);
 
-  if (user) {
+  if (session) {
     try {
       const playlists = await request
         .get('me/playlists', {
-          headers: { Authorization: `Bearer ${user.user.accessToken}` },
+          headers: { Authorization: `Bearer ${session.user.accessToken}` },
         })
         .json<SpotifyApi.PagingObject<SpotifyApi.PlaylistObjectFull>>();
 
@@ -30,12 +30,12 @@ const HomePage: FC<{
 
       return (
         <Page>
-          <Shuffler user={user.user} playlists={filteredPlaylists} />
+          <Shuffler user={session.user} playlists={filteredPlaylists} />
         </Page>
       );
     } catch (error) {
       if (error instanceof HTTPError && error.response.status === 401) {
-        await signOut();
+        signOut();
       } else {
         console.error('An unexpected error occurred:', error);
       }
