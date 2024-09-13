@@ -71,23 +71,23 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
   const shuffleOptions = useMemo(
     () => [
       {
-        label: t('shuffle_options_date_playlist_asc'),
+        label: t('playlist.shuffle_options.date_playlist_asc'),
         value: ShuffleOptions.DatePlaylistAsc,
       },
       {
-        label: t('shuffle_options_date_playlist_desc'),
+        label: t('playlist.shuffle_options.date_playlist_desc'),
         value: ShuffleOptions.DatePlaylistDesc,
       },
       {
-        label: t('shuffle_options_length_asc'),
+        label: t('playlist.shuffle_options.length_asc'),
         value: ShuffleOptions.LengthAsc,
       },
       {
-        label: t('shuffle_options_length_desc'),
+        label: t('playlist.shuffle_options.length_desc'),
         value: ShuffleOptions.LengthDesc,
       },
-      { label: t('shuffle_options_popular'), value: ShuffleOptions.Popular },
-      { label: t('shuffle_options_random'), value: ShuffleOptions.Random },
+      { label: t('playlist.shuffle_options.popular'), value: ShuffleOptions.Popular },
+      { label: t('playlist.shuffle_options.random'), value: ShuffleOptions.Random },
     ],
     [t],
   );
@@ -198,12 +198,12 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       }
     },
     onSuccess: () => {
-      toast.success(t('successfully_shuffled_playlist'));
+      toast.success(t('playlist.success_while_shuffling_playlist'));
 
       setIsShuffling(false);
     },
     onError: () => {
-      toast.error(t('could_not_shuffle_playlist'));
+      toast.error(t('playlist.error_while_shuffling_playlist'));
 
       setIsShuffling(false);
     },
@@ -223,7 +223,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
           loading={isShuffling}
           icon={IconArrowsShuffle}
         >
-          {t('shuffle')}
+          {t('playlist.shuffle')}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

@@ -21,7 +21,7 @@ export const ShufflerUserInformation: FC<{ data: Session['user'] }> = ({ data })
       </Avatar>
       <div className="space-y-3">
         <h2 className="text-3xl desktop:text-4xl">
-          {t('hi')}
+          {t('auth.hi')}
           ,
           {' '}
           <b>{data.name}</b>

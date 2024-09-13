@@ -1,26 +1,38 @@
 {
-  "app_description": "Tool that allows you to easily mix and organize tracks in your Spotify playlists.",
-  "app_title": "gebraryz's Spotify Playlists Shuffler",
-  "change_theme": "Change theme",
-  "could_not_shuffle_playlist": "Could not shuffle playlist",
-  "create_playlist": "Create",
-  "dark": "Dark",
-  "error_while_creating_playlist": "Error while creating playlist",
-  "error_while_logging_in": "Error while logging in",
-  "hi": "Hi",
-  "light": "Light",
-  "log_out": "Log out",
-  "motivation_to_never_give_up": "Motivation to never give up",
-  "my_playlist": "My playlist",
-  "shuffle": "Shuffle",
-  "shuffle_options_date_playlist_asc": "By date added to playlist (ascending)",
-  "shuffle_options_date_playlist_desc": "By date added to playlist (descending)",
-  "shuffle_options_length_asc": "By song length (ascending)",
-  "shuffle_options_length_desc": "By song length (descending)",
-  "shuffle_options_popular": "By popularity",
-  "shuffle_options_random": "Randomly",
-  "successfully_added_playlist": "Successfully added playlist",
-  "successfully_shuffled_playlist": "Successfully shuffled playlist",
-  "system": "System",
-  "total_tracks": "{count} tracks"
+  "app": {
+    "description": "A tool that allows you to easily mix and organize tracks in Spotify playlists.",
+    "title": "Shuffler for Spotify playlists by gebraryz"
+  },
+  "auth": {
+    "error_while_logging_in": "An error occurred while logging in",
+    "log_out": "Log out",
+    "hi": "Hi"
+  },
+  "playlist": {
+    "name_placeholder": "Playlist name",
+    "total_tracks": "{count} tracks",
+    "create": "Create",
+    "shuffle": "Shuffle",
+    "success_while_creating_playlist": "Playlist created successfully",
+    "success_while_shuffling_playlist": "Playlist shuffled successfully",
+    "error_while_creating_playlist": "An error occurred while creating the playlist",
+    "error_while_shuffling_playlist": "An error occurred while shuffling the playlist",
+    "shuffle_options": {
+      "date_playlist_asc": "By date added to playlist (oldest first)",
+      "date_playlist_desc": "By date added to playlist (newest first)",
+      "length_asc": "By song length (ascending)",
+      "length_desc": "By song length (descending)",
+      "popular": "By popularity",
+      "random": "Randomly"
+    }
+  },
+  "playlists_recommendations_names": {
+    "motivation_to_never_give_up": "Motivation to never give up"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "change": "Change theme"
+  }
 }

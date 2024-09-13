@@ -24,12 +24,14 @@ const HomePage: FC<{
 
       const filteredPlaylists = searchParams.search
         ? playlists.items.filter(playlist =>
-          playlist.name.toLowerCase().includes(searchParams.search.toLowerCase()),
+          playlist.name
+            .toLowerCase()
+            .includes(searchParams.search.toLowerCase()),
         )
         : playlists.items;
 
       return (
-        <Page>
+        <Page className="space-y-6">
           <Shuffler user={session.user} playlists={filteredPlaylists} />
         </Page>
       );
@@ -43,7 +45,7 @@ const HomePage: FC<{
   }
 
   return (
-    <Page>
+    <Page className="space-y-6">
       <LogIn />
     </Page>
   );

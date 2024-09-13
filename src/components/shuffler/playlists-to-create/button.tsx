@@ -36,10 +36,10 @@ export const ShufflerPlaylistsToCreateButton: FC<{
       });
     },
     onSuccess: () => {
-      toast.success(t('successfully_added_playlist'));
+      toast.success(t('playlist.success_while_creating_playlist'));
     },
     onError: () => {
-      toast.error(t('error_while_creating_playlist'));
+      toast.error(t('playlist.error_while_creating_playlist'));
     },
   });
 
@@ -51,7 +51,7 @@ export const ShufflerPlaylistsToCreateButton: FC<{
         mutate();
       }}
     >
-      {t('create_playlist')}
+      {t('playlist.create')}
     </Button>
   );
 };

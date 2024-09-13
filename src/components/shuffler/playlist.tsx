@@ -33,7 +33,7 @@ export const ShufflerPlaylist: FC<{
         <div className="space-y-1">
           <h3 className="text-xl">{name}</h3>
           <p className="text-muted-foreground">
-            {t('total_tracks', { count: data.total })}
+            {t('playlist.total_tracks', { count: data.total })}
           </p>
         </div>
       </div>

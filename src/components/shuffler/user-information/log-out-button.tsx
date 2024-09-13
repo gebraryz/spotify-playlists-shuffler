@@ -21,7 +21,7 @@ export const ShufflerUserInformationLogOutButton: FC = () => {
         setIsLoading(true);
       }}
     >
-      {t('log_out')}
+      {t('auth.log_out')}
     </Button>
   );
 };

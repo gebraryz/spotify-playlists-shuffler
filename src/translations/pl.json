@@ -1,27 +1,38 @@
 {
-  "app_description": "Narzędzie, które umożliwia łatwe mieszanie i organizowanie utworów w playlistach na Spotify.",
-  "app_title": "Shuffler playlist Spotify by gebraryz",
-  "change_theme": "Zmień motyw",
-  "could_not_shuffle_playlist": "Nie udało się wymieszać playlisty",
-  "create_playlist": "Utwórz",
-  "dark": "Ciemny",
-  "error_while_creating_playlist": "Wystąpił błąd podczas tworzenia playlisty",
-  "error_while_logging_in": "Wystąpił błąd podczas logowania",
-  "hi": "Cześć",
-  "light": "Jasny",
-  "log_out": "Wyloguj się",
-  "motivation_to_never_give_up": "Motywacja, by nigdy się nie poddawać",
-  "my_playlist": "Moja playlista",
-  "shuffle": "Wymieszaj",
-  "shuffle_options_date_playlist_asc": "Po dacie dodania do playlisty (od najstarszych)",
-  "shuffle_options_date_playlist_desc": "Po dacie dodania do playlisty (od najmłodszych)",
-  "shuffle_options_length_asc": "Po długości piosenki (rosnąco)",
-  "shuffle_options_length_desc": "Po długości piosenki (malejąco)",
-  "shuffle_options_popular": "Po najpopularniejszych",
-  "shuffle_options_random": "Losowo",
-  "successfully_added_playlist": "Pomyślnie dodano playlistę",
-  "successfully_shuffled_playlist": "Pomyślnie wymieszano playlistę",
-  "successfully_shuffled_playlist_without_name": "Pomyślnie wymieszano playlistę",
-  "system": "Systemowy",
-  "total_tracks": "{count} utworów"
+  "app": {
+    "description": "Narzędzie, które umożliwia łatwe mieszanie i organizowanie utworów w playlistach na Spotify.",
+    "title": "Shuffler playlist Spotify by gebraryz"
+  },
+  "auth": {
+    "error_while_logging_in": "Wystąpił błąd podczas logowania",
+    "log_out": "Wyloguj się",
+    "hi": "Cześć"
+  },
+  "playlist": {
+    "name_placeholder": "Nazwa playlisty",
+    "total_tracks": "{count} utworów",
+    "create": "Utwórz",
+    "shuffle": "Wymieszaj",
+    "success_while_creating_playlist": "utworzono playlistę",
+    "success_while_shuffling_playlist": "Wymieszano playlistę",
+    "error_while_creating_playlist": "Wystąpił błąd podczas tworzenia playlisty",
+    "error_while_shuffling_playlist": "Wystąpił błąd podczas mieszania playlisty",
+    "shuffle_options": {
+      "date_playlist_asc": "Po dacie dodania do playlisty (od najstarszych)",
+      "date_playlist_desc": "Po dacie dodania do playlisty (od najmłodszych)",
+      "length_asc": "Po długości piosenki (rosnąco)",
+      "length_desc": "Po długości piosenki (malejąco)",
+      "popular": "Po najpopularniejszych",
+      "random": "Losowo"
+    }
+  },
+  "playlists_recommendations_names": {
+    "motivation_to_never_give_up": "Motywacja, by nigdy się nie poddawać"
+  },
+  "theme": {
+    "dark": "Ciemny",
+    "light": "Jasny",
+    "system": "Systemowy",
+    "change": "Zmień motyw"
+  }
 }

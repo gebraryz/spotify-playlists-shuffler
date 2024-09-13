@@ -29,7 +29,7 @@ export const ShufflerPlaylistsToShuffleSearch: FC<{
 
   return (
     <Input
-      placeholder={randomPlaylistName ?? t('my_playlist')}
+      placeholder={randomPlaylistName ?? t('playlist.name_placeholder')}
       onChange={debounce((event) => {
         router.push(`?search=${event.target.value}`);
       }, 100)}

@@ -23,7 +23,7 @@ export const LogIn: FC = () => {
 
             setIsRedirecting(true);
           } catch {
-            toast.error(t('error_while_logging_in'));
+            toast.error(t('auth.error_while_logging_in'));
           }
         }}
       >

@@ -23,7 +23,7 @@ export const ShufflerPlaylistsToCreate: FC<{ accessToken: string }> = ({
   }[] = [
     {
       id: 'motivation-to-never-give-up',
-      name: t('motivation_to_never_give_up'),
+      name: t('playlists_recommendations_names.motivation_to_never_give_up'),
       description: '🎵 We\'re no strangers to love...',
       availableAt: [`${CURRENT_YEAR}-06-27`, `${CURRENT_YEAR}-04-01`],
       tracks: ['4cOdK2wGLETKBW3PvgPWqT'], // "Never Gonna Give You Up" by Rick Astley

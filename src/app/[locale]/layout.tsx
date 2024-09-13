@@ -19,8 +19,8 @@ const font = IBM_Plex_Sans({
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = (await getMessages()) as IntlMessages;
 
-  const title = t.app_title;
-  const description = t.app_description;
+  const title = t.app.title;
+  const description = t.app.description;
 
   return {
     title,
