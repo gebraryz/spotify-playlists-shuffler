@@ -16,9 +16,9 @@ export const ShufflerUserInformationLogOutButton: FC = () => {
       icon={IconLogout2}
       loading={isLoading}
       onClick={async () => {
-        await signOut();
-
         setIsLoading(true);
+
+        await signOut();
       }}
     >
       {t('auth.log_out')}
