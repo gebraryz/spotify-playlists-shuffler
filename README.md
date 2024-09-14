@@ -4,6 +4,8 @@ A tool that allows you to easily mix and organize tracks in Spotify playlists.
 
 ## Features
 
+- Option to download profile picture and playlist cover image
+- Count of shuffled songs
 - Shuffle according to specified criteria:
   - By date added to playlist (oldest first)
   - By date added to playlist (newest first)
@@ -52,11 +54,23 @@ Make sure you have the following installed:
       ```
 
 3. Configure environment variables:
-    * Copy the `.env.example` file to `.env.local`:
+    * Copy the `.env.local.example` file to `.env.local`:
 
       ```bash
-        cp .env.example .env.local
+        cp .env.local.example .env.local
       ```
+
+4. Set up the database: before starting the application, you need to create a PostgreSQL database. Once the database is created, run the following command to create the necessary tables:
+
+  * With Yarn:
+    ```bash
+    yarn prisma:push
+    ```
+
+  * With NPM:
+    ```bash
+    npm run prisma:push
+    ```
 
 ### Obtaining Spotify API Tokens
 
