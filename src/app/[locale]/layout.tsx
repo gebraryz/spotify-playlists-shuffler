@@ -1,5 +1,6 @@
 import '../../styles/global.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { getMessages } from 'next-intl/server';
@@ -59,6 +60,7 @@ const Layout: FC<PropsWithChildren<{ params: { locale: string } }>> = async ({
           </div>
         </ClientSidePackagesProviders>
         <Toaster richColors />
+        <Analytics />
       </body>
     </html>
   );
