@@ -38,6 +38,11 @@
   "footer": {
     "all_rights_reserved": "Wszelkie prawa zastrzeżone"
   },
+  "icon_image": {
+    "download": "Pobierz zdjęcie",
+    "preview": "Podgląd zdjęcia",
+    "error_while_downloading": "Wystąpił błąd podczas pobierania zdjęcia"
+  },
   "loading": "Ładowanie",
   "playlist": {
     "name_placeholder": "Nazwa playlisty",
@@ -66,5 +71,8 @@
     "light": "Jasny",
     "system": "Systemowy",
     "change": "Zmień motyw"
+  },
+  "user": {
+    "profile_image": "Zdjęcie profilowe"
   }
 }

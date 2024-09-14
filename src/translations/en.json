@@ -38,6 +38,11 @@
   "footer": {
     "all_rights_reserved": "All rights reserved"
   },
+  "icon_image": {
+    "download": "Download image",
+    "preview": "Image preview",
+    "error_while_downloading": "An error occurred while downloading the image"
+  },
   "loading": "Loading",
   "playlist": {
     "name_placeholder": "Playlist name",
@@ -66,5 +71,8 @@
     "light": "Light",
     "system": "System",
     "change": "Change theme"
+  },
+  "user": {
+    "profile_image": "Profile image"
   }
 }

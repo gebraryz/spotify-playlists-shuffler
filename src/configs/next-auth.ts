@@ -3,6 +3,8 @@ import SpotifyProvider from 'next-auth/providers/spotify';
 
 import { environmentVariables } from '@/utils/environment-variables';
 
+import { request } from './request';
+
 const SPOTIFY_AUTHORIZATION_OPTIONS = [
   'user-read-email',
   'playlist-read-private',
@@ -29,8 +31,18 @@ export const nextAuthOptions: AuthOptions = {
     },
     async session({ session, token }) {
       if (token.accessToken) {
+        const user = await request
+          .get('me', {
+            headers: { Authorization: `Bearer ${token.accessToken}` },
+          })
+          .json<SpotifyApi.UserProfileResponse>();
+
         session.user = {
           ...session.user,
+          image:
+            user && user.images && user.images[1]
+              ? user.images[1].url
+              : session.user,
           accessToken: token.accessToken,
         } as DefaultSession['user'];
       }

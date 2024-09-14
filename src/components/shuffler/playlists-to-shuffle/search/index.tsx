@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
 
-import { Input } from '@/components/ui/input';
+import { Input } from './input';
 
 const debounce = <Params extends any[]>(
   func: (...args: Params) => any,

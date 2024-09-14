@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
 
-import { ContentContainer } from './content-container';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { ContentContainer } from '../content-container';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion';
 
 export const Faq: FC = () => {
   const t = useTranslations();
