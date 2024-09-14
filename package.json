@@ -9,6 +9,7 @@
     "prisma:studio": "dotenv -e .env.local prisma studio",
     "prisma:migrate-dev": "dotenv -e .env.local prisma migrate dev",
     "prisma:migrate-prod": "dotenv -e .env.local prisma migrate deploy",
+    "prisma:generate": "dotenv -e .env.local prisma generate",
     "lint": "next lint",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
