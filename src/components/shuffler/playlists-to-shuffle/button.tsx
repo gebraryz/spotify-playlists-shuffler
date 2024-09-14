@@ -166,9 +166,16 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       let tracks = await fetchAllTracks(id);
       let sortedTracks = sortTracks(tracks);
 
-      let processedTracks = 0;
+      let processedTracksCount = 0;
+      let shuffledTracksCount = 0;
 
       const updatedIndices = new Set<number>();
+
+      const sendIncreaseShufflesCount = async (count: number) => {
+        await request('route-handler').post('increase-shuffles-count', {
+          json: { shuffleOption: selectedShuffleOption, count },
+        });
+      };
 
       for (const [i, sortedTrack] of sortedTracks.entries()) {
         if (!sortedTrack) {
@@ -198,26 +205,36 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
             });
 
             updatedIndices.add(initialTrackIndex);
-            processedTracks += 1;
+
+            processedTracksCount += 1;
+            shuffledTracksCount += 1;
 
             setShuffleCompletionProgress(
               Number.parseFloat(
-                ((processedTracks / sortedTracks.length) * 100).toFixed(2),
+                ((processedTracksCount / sortedTracks.length) * 100).toFixed(2),
               ),
             );
+
+            // After processing every 10 tracks, or as per the defined condition, send a request to update the shuffle count. This ensures that the shuffle count is accurately recorded and resets the count for the next batch of tracks.
+            if (processedTracksCount % 10 === 0) {
+              await sendIncreaseShufflesCount(shuffledTracksCount);
+
+              shuffledTracksCount = 0;
+            }
 
             if (selectedShuffleOption !== ShuffleOptions.Random) {
               tracks = await fetchAllTracks(id);
               sortedTracks = sortTracks(tracks);
             }
-
-            await request('route-handler').post('increase-shuffles-count', {
-              json: { shuffleOption: selectedShuffleOption },
-            });
           } catch (error) {
             console.error(`Failed to update track at index ${i}:`, error);
           }
         }
+      }
+
+      // Ensure that any remaining tracks, which were processed after the last batch, have their shuffle count updated. This handles cases where the total number of tracks is not a multiple of 10 and ensures all processed tracks are counted.
+      if (processedTracksCount % 10 !== 0) {
+        await sendIncreaseShufflesCount(shuffledTracksCount);
       }
     },
     onSuccess: () => {
