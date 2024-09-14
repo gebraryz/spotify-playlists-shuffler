@@ -31,7 +31,7 @@ export const nextAuthOptions: AuthOptions = {
     },
     async session({ session, token }) {
       if (token.accessToken) {
-        const user = await request
+        const user = await request('spotify')
           .get('me', {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           })

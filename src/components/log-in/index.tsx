@@ -10,8 +10,8 @@ export const LogIn: FC = () => {
   const t = useTranslations();
 
   return (
-    <ContentContainer className="grid p-0 desktop:grid-cols-2 desktop:gap-x-14">
-      <div className="flex flex-col justify-center gap-y-6 p-8">
+    <ContentContainer className="grid py-0 desktop:grid-cols-2 desktop:gap-x-14">
+      <div className="flex flex-col justify-center gap-y-6 px-0 py-8 desktop:px-8">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold">{t('app.title')}</h1>
           <p className="text-muted-foreground">{t('app.description')}</p>

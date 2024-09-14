@@ -66,6 +66,10 @@
   "playlists_recommendations_names": {
     "motivation_to_never_give_up": "Motivation to never give up"
   },
+  "statistics": {
+    "total": "Total number of shuffled songs",
+    "last_24_hours": "Number of shuffled songs in the last 24 hours"
+  },
   "theme": {
     "dark": "Dark",
     "light": "Light",

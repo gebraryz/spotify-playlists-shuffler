@@ -1,5 +1,5 @@
 import ky from 'ky';
 
-export const request = ky.extend({
-  prefixUrl: 'https://api.spotify.com/v1',
+export const request = (type: 'route-handler' | 'spotify') => ky.extend({
+  prefixUrl: type === 'spotify' ? 'https://api.spotify.com/v1' : '/api',
 });

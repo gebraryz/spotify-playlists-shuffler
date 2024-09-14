@@ -20,7 +20,7 @@ export const ShufflerPlaylistsToCreateButton: FC<{
     mutationFn: async () => {
       const headers = { Authorization: `Bearer ${accessToken}` };
 
-      const { id: playlistId } = await request.post('me/playlists', {
+      const { id: playlistId } = await request('spotify').post('me/playlists', {
         headers,
         json: {
           description: data.description,
@@ -30,7 +30,7 @@ export const ShufflerPlaylistsToCreateButton: FC<{
         },
       }).json<Pick<SpotifyApi.PlaylistObjectFull, 'id'>>();
 
-      await request.post(`playlists/${playlistId}/tracks`, {
+      await request('spotify').post(`playlists/${playlistId}/tracks`, {
         headers,
         json: { uris: tracks.map(track => `spotify:track:${track}`) },
       });

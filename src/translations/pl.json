@@ -66,6 +66,10 @@
   "playlists_recommendations_names": {
     "motivation_to_never_give_up": "Motywacja, by nigdy się nie poddawać"
   },
+  "statistics": {
+    "total": "Wymieszano piosenek",
+    "last_24_hours": "Wymieszano piosenek w ciągu 24 godzin"
+  },
   "theme": {
     "dark": "Ciemny",
     "light": "Jasny",

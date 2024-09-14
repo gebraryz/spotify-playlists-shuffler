@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ShuffleOptions {
+  DatePlaylistAsc
+  DatePlaylistDesc
+  LengthAsc
+  LengthDesc
+  Popular
+  Random
+
+  @@map("shuffle_options")
+}
+
+model PlaylistShuffle {
+  id            String         @id
+  shuffleOption ShuffleOptions @map("shuffle_option")
+  shuffledAt    DateTime       @map("shuffled_at")
+
+  @@map("playlist_shuffles")
+}

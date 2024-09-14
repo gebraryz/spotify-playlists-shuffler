@@ -1,5 +1,6 @@
 'use client';
 
+import { ShuffleOptions } from '@prisma/client';
 import { IconArrowsShuffle } from '@tabler/icons-react';
 import { useMutation } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
@@ -15,14 +16,7 @@ import {
 } from '@/components/ui/dropdown';
 import { request } from '@/configs/request';
 
-enum ShuffleOptions {
-  DatePlaylistAsc = 'date_playlist_asc',
-  DatePlaylistDesc = 'date_playlist_desc',
-  LengthAsc = 'length_asc',
-  LengthDesc = 'length_desc',
-  Popular = 'popular',
-  Random = 'random',
-}
+import { increaseShufflesCount } from './action';
 
 const TRACK_IS_REQUIRED_ERROR_MESSAGE = 'Track is required';
 
@@ -41,7 +35,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       let allTracks: SpotifyApi.PlaylistTrackObject[] = [];
 
       while (hasNextPage) {
-        const response = await request
+        const response = await request('spotify')
           .get(`playlists/${playlistId}/tracks`, {
             headers: { Authorization: `Bearer ${accessToken}` },
             searchParams: {
@@ -86,8 +80,14 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
         label: t('playlist.shuffle_options.length_desc'),
         value: ShuffleOptions.LengthDesc,
       },
-      { label: t('playlist.shuffle_options.popular'), value: ShuffleOptions.Popular },
-      { label: t('playlist.shuffle_options.random'), value: ShuffleOptions.Random },
+      {
+        label: t('playlist.shuffle_options.popular'),
+        value: ShuffleOptions.Popular,
+      },
+      {
+        label: t('playlist.shuffle_options.random'),
+        value: ShuffleOptions.Random,
+      },
     ],
     [t],
   );
@@ -185,9 +185,12 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
           return track.id === sortedTrack.track.id;
         });
 
-        if (initialTrackIndex !== -1 && !updatedIndices.has(initialTrackIndex)) {
+        if (
+          initialTrackIndex !== -1
+          && !updatedIndices.has(initialTrackIndex)
+        ) {
           try {
-            await request.put(`playlists/${id}/tracks`, {
+            await request('spotify').put(`playlists/${id}/tracks`, {
               headers: { Authorization: `Bearer ${accessToken}` },
               json: {
                 range_start: initialTrackIndex,
@@ -200,13 +203,17 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
             processedTracks += 1;
 
             setShuffleCompletionProgress(
-              Number.parseFloat(((processedTracks / sortedTracks.length) * 100).toFixed(2)),
+              Number.parseFloat(
+                ((processedTracks / sortedTracks.length) * 100).toFixed(2),
+              ),
             );
 
             if (selectedShuffleOption !== ShuffleOptions.Random) {
               tracks = await fetchAllTracks(id);
               sortedTracks = sortTracks(tracks);
             }
+
+            await increaseShufflesCount(selectedShuffleOption!);
           } catch (error) {
             console.error(`Failed to update track at index ${i}:`, error);
           }
@@ -238,7 +245,12 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       <DropdownMenuTrigger asChild>
         <Button
           disabled={totalTracks === 0}
-          loading={{ state: isShuffling, text: t('playlist.shuffle_progress', { percent: shuffleCompletionProgress }) }}
+          loading={{
+            state: isShuffling,
+            text: t('playlist.shuffle_progress', {
+              percent: shuffleCompletionProgress,
+            }),
+          }}
           icon={IconArrowsShuffle}
         >
           {t('playlist.shuffle')}
