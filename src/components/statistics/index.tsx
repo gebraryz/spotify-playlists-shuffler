@@ -1,32 +1,54 @@
+'use client';
+
+import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
-import type { FC } from 'react';
+import type { FC, HTMLAttributes } from 'react';
+
+import { request } from '@/configs/request';
+import { cn } from '@/utils/cn';
 
 import { ContentContainer } from '../content-container';
 import { StatisticsCounter } from './counter';
 
-export const Statististics: FC<{
-  shuffles: number;
-  shufflesInLast24Hours: number;
-}> = ({ shuffles, shufflesInLast24Hours }) => {
-  const t = useTranslations();
+const Skeleton = ({
+  className,
+  ...props
+}: HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn('animate-pulse rounded-md bg-primary/10', className)}
+    {...props}
+  />
+);
 
-  const values = [
-    { label: t('statistics.total'), value: shuffles },
-    { label: t('statistics.last_24_hours'), value: shufflesInLast24Hours },
-  ];
+export { Skeleton };
+
+export const Statististics: FC = () => {
+  const t = useTranslations();
+  const { data, isLoading } = useQuery({
+    queryKey: ['statistics'],
+    queryFn: async () => request('route-handler').get('shuffles-count').json<{
+      totalShufflesInLast24Hours: number;
+      totalShuffles: number;
+    }>(),
+  });
 
   return (
     <ContentContainer>
-      {values.map(({ label, value }) => (
-        <p className="text-xl" key={label}>
-          {label}
-          :
-          {' '}
-          <b>
-            <StatisticsCounter value={value} />
-          </b>
-        </p>
-      ))}
+      {data && !isLoading
+        ? [
+            { label: t('statistics.total'), value: data?.totalShuffles },
+            { label: t('statistics.last_24_hours'), value: data.totalShufflesInLast24Hours },
+          ].map(({ label, value }) => (
+            <p className="text-xl" key={label}>
+              {label}
+              :
+              {' '}
+              <b>
+                <StatisticsCounter value={value} />
+              </b>
+            </p>
+          ))
+        : <Skeleton className="h-[60px] w-full" />}
     </ContentContainer>
   );
 };

@@ -8,22 +8,12 @@ import { LogIn } from '@/components/log-in';
 import { Shuffler } from '@/components/shuffler';
 import { Statististics } from '@/components/statistics';
 import { nextAuthOptions } from '@/configs/next-auth';
-import { prisma } from '@/configs/prisma';
 import { request } from '@/configs/request';
 
 const HomePage: FC<{
   searchParams: { search: string };
 }> = async ({ searchParams }) => {
   const session = await getServerSession(nextAuthOptions);
-
-  const totalShuffles = await prisma.playlistShuffle.count();
-  const totalShufflesInLast24Hours = await prisma.playlistShuffle.count({
-    where: {
-      shuffledAt: {
-        gte: new Date(Date.now() - 24 * 60 * 60 * 1000),
-      },
-    },
-  });
 
   let jsxContent;
 
@@ -58,10 +48,7 @@ const HomePage: FC<{
   return (
     <>
       {jsxContent}
-      <Statististics
-        shuffles={totalShuffles}
-        shufflesInLast24Hours={totalShufflesInLast24Hours}
-      />
+      <Statististics />
       <Faq />
     </>
   );

@@ -16,8 +16,6 @@ import {
 } from '@/components/ui/dropdown';
 import { request } from '@/configs/request';
 
-import { increaseShufflesCount } from './action';
-
 const TRACK_IS_REQUIRED_ERROR_MESSAGE = 'Track is required';
 
 export const ShufflerPlaylistsToShuffleButton: FC<{
@@ -162,7 +160,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
     [selectedShuffleOption],
   );
 
-  const { mutate } = useMutation({
+  const { mutate: shuffle } = useMutation({
     mutationKey: ['playlists', id],
     mutationFn: async () => {
       let tracks = await fetchAllTracks(id);
@@ -213,7 +211,9 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
               sortedTracks = sortTracks(tracks);
             }
 
-            await increaseShufflesCount(selectedShuffleOption!);
+            await request('route-handler').post('increase-shuffles-count', {
+              json: { shuffleOption: selectedShuffleOption },
+            });
           } catch (error) {
             console.error(`Failed to update track at index ${i}:`, error);
           }
@@ -236,9 +236,9 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
 
   useEffect(() => {
     if (isShuffling && selectedShuffleOption) {
-      mutate();
+      shuffle();
     }
-  }, [isShuffling, selectedShuffleOption, mutate]);
+  }, [isShuffling, selectedShuffleOption, shuffle]);
 
   return (
     <DropdownMenu>
