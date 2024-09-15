@@ -1,6 +1,6 @@
 {
   "name": "spotify-playlists-shuffler",
-  "version": "2.1.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "next:dev": "next dev",
