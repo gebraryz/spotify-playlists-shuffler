@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
 
@@ -12,6 +13,10 @@ export const Footer: FC = () => {
         &copy;
         {' '}
         {new Date().getFullYear()}
+        {' '}
+        <Link href="https://www.gebraryz.me" title="Bartłomiej Olejnik" className="text-[#1a5fe3]">
+          Bartłomiej Olejnik
+        </Link>
         .
         {' '}
         {t('footer.all_rights_reserved')}
