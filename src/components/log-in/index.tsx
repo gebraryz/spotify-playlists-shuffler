@@ -18,7 +18,7 @@ export const LogIn: FC = () => {
         </div>
         <LogInButton className="w-full bg-[#1db954] hover:bg-[#1db954]/90" />
       </div>
-      <div className="hidden items-center justify-center rounded-b-md rounded-l-none border-l-border bg-black p-4 dark:border-l dark:bg-secondary desktop:flex desktop:rounded-r-md desktop:p-12">
+      <div className="hidden items-center justify-center rounded-b-xl rounded-l-none border-l-border bg-black p-4 dark:border-l dark:bg-secondary desktop:flex desktop:rounded-r-xl desktop:p-12">
         <div className="relative size-[200px] desktop:size-[275px]">
           <Image src={spotifyLogo.src} alt="Spotify logo" fill />
         </div>

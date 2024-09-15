@@ -7,7 +7,7 @@ export const ContentContainer: FC<
 > = ({ className, title, as: Component = 'div', children }) => (
   <Component
     className={cn(
-      'rounded-md border border-border bg-background p-4 shadow-md',
+      'rounded-xl border border-border bg-background p-6 desktop:p-8 shadow-md',
       title ? 'relative' : null,
       className,
     )}

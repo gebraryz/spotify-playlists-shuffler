@@ -44,6 +44,10 @@
     "error_while_downloading": "An error occurred while downloading the image"
   },
   "loading": "Loading",
+  "not_found": {
+    "message": "Page Not Found",
+    "explanation": "We couldn't find the page you were looking for. You may have entered an incorrect URL or the page has been removed."
+  },
   "playlist": {
     "name_placeholder": "Playlist name",
     "total_tracks": "{count} tracks",

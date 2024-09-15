@@ -44,6 +44,10 @@
     "error_while_downloading": "Wystąpił błąd podczas pobierania zdjęcia"
   },
   "loading": "Ładowanie",
+  "not_found": {
+    "message": "Nie znaleziono strony",
+    "explanation": "Nie udało się znaleźć strony, której szukasz. Być może wprowadziłeś błędny adres URL lub strona została usunięta"
+  },
   "playlist": {
     "name_placeholder": "Nazwa playlisty",
     "total_tracks": "{count} utworów",
