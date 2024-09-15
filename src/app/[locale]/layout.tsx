@@ -2,7 +2,7 @@ import '../../styles/global.css';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 import { getMessages } from 'next-intl/server';
 import type { FC, PropsWithChildren } from 'react';
 
@@ -12,7 +12,7 @@ import { TopBar } from '@/components/top-bar';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';
 
-const font = Roboto({
+const font = Rubik({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-sans',
