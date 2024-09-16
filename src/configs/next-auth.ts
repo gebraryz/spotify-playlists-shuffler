@@ -13,7 +13,6 @@ const SPOTIFY_AUTHORIZATION_OPTIONS = [
 ].join(',');
 
 export const nextAuthOptions: AuthOptions = {
-  secret: environmentVariables.NEXTAUTH_SECRET,
   providers: [
     SpotifyProvider({
       clientId: environmentVariables.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
@@ -21,6 +20,7 @@ export const nextAuthOptions: AuthOptions = {
       authorization: `https://accounts.spotify.com/authorize?scope=${SPOTIFY_AUTHORIZATION_OPTIONS}`,
     }),
   ],
+  secret: environmentVariables.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, account }) {
       if (account && account.access_token) {
