@@ -10,10 +10,7 @@ import { cn } from '@/utils/cn';
 import { ContentContainer } from '../content-container';
 import { StatisticsCounter } from './counter';
 
-const Skeleton = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => (
+const Skeleton = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn('animate-pulse rounded-md bg-primary/10', className)}
     {...props}
@@ -26,29 +23,37 @@ export const Statististics: FC = () => {
   const t = useTranslations();
   const { data, isLoading } = useQuery({
     queryKey: ['statistics'],
-    queryFn: async () => request('route-handler').get('shuffles-count').json<{
-      totalShufflesInLast24Hours: number;
-      totalShuffles: number;
-    }>(),
+    queryFn: async () =>
+      request('route-handler').get('shuffles-count').json<{
+        totalShufflesInLast24Hours: number;
+        totalShuffles: number;
+      }>(),
   });
 
   return (
     <ContentContainer>
       {data && !isLoading
-        ? [
-            { label: t('statistics.total'), value: data?.totalShuffles },
-            { label: t('statistics.last_24_hours'), value: data.totalShufflesInLast24Hours },
-          ].map(({ label, value }) => (
-            <p className="text-xl" key={label}>
-              {label}
-              :
-              {' '}
-              <b>
-                <StatisticsCounter value={value} />
-              </b>
-            </p>
-          ))
-        : <Skeleton className="h-[60px] w-full" />}
+        ? (
+            [
+              { label: t('statistics.total'), value: data.totalShuffles },
+              {
+                label: t('statistics.last_24_hours'),
+                value: data.totalShufflesInLast24Hours,
+              },
+            ].map(({ label, value }) => (
+              <p className="text-xl" key={label}>
+                {label}
+                :
+                {' '}
+                <b>
+                  <StatisticsCounter value={value} />
+                </b>
+              </p>
+            ))
+          )
+        : (
+            <Skeleton className="h-[60px] w-full" />
+          )}
     </ContentContainer>
   );
 };

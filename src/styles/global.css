@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+    --spotify: 141 65% 41%;
+    --spotify-hover: 141 62.5% 37.65%;
+
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -76,14 +79,10 @@
   }
 
   body {
+    background-size: 100%;
+    background-image: url('../assets/background-image.png');
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
-    background-image: url('../assets/lines.png');
-    background-size: 100%;
-  }
-
-  .free-product {
-    @apply font-bold text-green-600;
   }
 }

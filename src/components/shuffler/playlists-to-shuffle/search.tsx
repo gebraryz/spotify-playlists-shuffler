@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
 
-import { Input } from './input';
+import { cn } from '@/utils/cn';
 
 const debounce = <Params extends any[]>(
   func: (...args: Params) => any,
@@ -23,13 +23,19 @@ const debounce = <Params extends any[]>(
 
 export const ShufflerPlaylistsToShuffleSearch: FC<{
   randomPlaylistName: string | undefined;
-}> = ({ randomPlaylistName }) => {
+  className?: string;
+}> = ({ randomPlaylistName, className }) => {
   const router = useRouter();
   const t = useTranslations();
 
   return (
-    <Input
+    <input
+      type="text"
       placeholder={randomPlaylistName ?? t('playlist.name_placeholder')}
+      className={cn(
+        'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+      )}
       onChange={debounce((event) => {
         router.push(`?search=${event.target.value}`);
       }, 100)}

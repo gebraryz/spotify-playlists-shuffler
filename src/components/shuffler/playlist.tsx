@@ -12,7 +12,6 @@ export const ShufflerPlaylist: FC<{
   const t = useTranslations();
 
   const name = data.name;
-
   const image = data.images && data.images[0] ? data.images[0].url : null;
 
   return (

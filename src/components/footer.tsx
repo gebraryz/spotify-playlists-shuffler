@@ -9,12 +9,18 @@ export const Footer: FC = () => {
 
   return (
     <ContentContainer as="footer">
-      <p>
+      <p className="text-xl">
         &copy;
         {' '}
         {new Date().getFullYear()}
         {' '}
-        <Link href="https://www.gebraryz.me" title="Bartłomiej Olejnik" className="text-[#1a5fe3]">
+        <Link
+          href="https://www.gebraryz.me"
+          title="Bartłomiej Olejnik"
+          className="font-bold text-spotify transition-colors hover:text-spotify-hover"
+          target="u_blank"
+          rel="noopener noreferrer"
+        >
           Bartłomiej Olejnik
         </Link>
         .

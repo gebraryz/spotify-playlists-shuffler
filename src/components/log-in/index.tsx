@@ -11,12 +11,12 @@ export const LogIn: FC = () => {
 
   return (
     <ContentContainer className="grid desktop:grid-cols-2 desktop:gap-x-14 desktop:p-0">
-      <div className="flex flex-col justify-center gap-y-6 px-0 py-8 desktop:px-8">
-        <div className="space-y-2">
+      <div className="flex flex-col justify-center gap-y-8 px-0 py-8 desktop:px-8">
+        <div className="space-y-3">
           <h1 className="text-3xl font-bold">{t('app.title')}</h1>
           <p className="text-muted-foreground">{t('app.description')}</p>
         </div>
-        <LogInButton className="w-full bg-[#1db954] hover:bg-[#1db954]/90" />
+        <LogInButton className="w-full bg-spotify hover:bg-spotify-hover" />
       </div>
       <div className="hidden items-center justify-center rounded-b-xl rounded-l-none border-l-border bg-black p-4 dark:border-l dark:bg-secondary desktop:flex desktop:rounded-r-xl desktop:p-12">
         <div className="relative size-[200px] desktop:size-[275px]">

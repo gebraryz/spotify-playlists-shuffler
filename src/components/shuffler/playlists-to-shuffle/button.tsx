@@ -261,7 +261,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          disabled={totalTracks === 0}
+          disabled={totalTracks <= 1}
           loading={{
             state: isShuffling,
             text: t('playlist.shuffle_progress', {
