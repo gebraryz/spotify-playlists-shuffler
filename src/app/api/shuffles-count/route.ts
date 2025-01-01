@@ -1,6 +1,6 @@
 import { prisma } from '@/configs/prisma';
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export const GET = async () => {
   const totalShuffles = await prisma.playlistShuffle.count();
