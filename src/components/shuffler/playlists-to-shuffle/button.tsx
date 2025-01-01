@@ -2,7 +2,7 @@
 
 import { ShuffleOptions } from '@prisma/client';
 import { IconArrowsShuffle } from '@tabler/icons-react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { type FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
@@ -54,6 +54,7 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
     [accessToken],
   );
 
+  const queryClient = useQueryClient();
   const t = useTranslations();
   const [selectedShuffleOption, setSelectedShuffleOption]
     = useState<ShuffleOptions>();
@@ -174,6 +175,10 @@ export const ShufflerPlaylistsToShuffleButton: FC<{
       const sendIncreaseShufflesCount = async (count: number) => {
         await request('route-handler').post('increase-shuffles-count', {
           json: { shuffleOption: selectedShuffleOption, count },
+        });
+
+        queryClient.invalidateQueries({
+          queryKey: ['statistics'],
         });
       };
 

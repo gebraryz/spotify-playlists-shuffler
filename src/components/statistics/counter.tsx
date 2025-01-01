@@ -3,6 +3,6 @@
 import type { FC } from 'react';
 import CountUp from 'react-countup';
 
-export const StatisticsCounter: FC<{ value: number }> = ({ value }) => (
-  <CountUp start={value / 2} end={value} duration={3} scrollSpyOnce />
+export const StatisticsCounter: FC<{ finalValue: number; startValue: number }> = ({ finalValue, startValue }) => (
+  <CountUp start={startValue} end={finalValue} duration={3} scrollSpyOnce />
 );
