@@ -4,17 +4,14 @@ A tool that allows you to easily mix and organize tracks in Spotify playlists.
 
 ## Preview
 
-### Homepage (Welcome Screen)
+### Homepage (welcome screen)
 ![Homepage Preview](./docs/welcome_screen.png)
 
-### Dashboard (Shuffling Playlists)
+### Dashboard (shuffling playlists)
 ![Dashboard Preview](./docs/shuffling_playlists.png)
 
-### Full Demo
-<video controls>
-  <source src="./docs/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+### Full demo
+https://github.com/user-attachments/assets/492675c7-18d6-4946-93f9-9348b2dcee5a
 
 ---
 
