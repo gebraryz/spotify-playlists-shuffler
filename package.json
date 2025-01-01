@@ -1,6 +1,5 @@
 {
   "name": "spotify-playlists-shuffler",
-  "version": "0.0.0",
   "private": true,
   "scripts": {
     "next:dev": "next dev",
@@ -33,7 +32,7 @@
     "ky": "^1.7.2",
     "next": "^14.2.11",
     "next-auth": "^4.24.7",
-    "next-intl": "^3.19.1",
+    "next-intl": "^3.26.3",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-countup": "^6.5.3",
