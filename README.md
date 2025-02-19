@@ -1,3 +1,5 @@
+⚠️ Disclaimer: To test this project, you need to run it locally. It hasn’t been submitted for Spotify’s approval yet, as some features don’t fully comply with their guidelines for apps of this type. Until then, the only way to use it is by running it on your own machine.
+
 # Shuffler for Spotify Playlists
 
 A tool that allows you to easily mix and organize tracks in Spotify playlists.
